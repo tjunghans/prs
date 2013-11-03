@@ -1,2 +1,11 @@
+<<<<<<< HEAD
 .idea/
 out
+=======
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+>>>>>>> a93a86737fc37e8c0b952a0d72f995039f1ba427
