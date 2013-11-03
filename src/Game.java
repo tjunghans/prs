@@ -27,7 +27,7 @@ public class Game {
     }
 
     public boolean start() {
-        System.out.println("Start Game");
+        System.out.println("Start Game" + System.getProperty("line.separator"));
 
         deck = new ShapeDeck();
 
