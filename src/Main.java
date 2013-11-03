@@ -7,6 +7,11 @@ public class Main {
 
         prsGame.start();
 
+        // 1. Show menu
+
+        Countdown countdown = new Countdown();
+        countdown.run();
+
 
 
 

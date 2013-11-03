@@ -22,11 +22,5 @@ public class CountdownTest {
 
     }
 
-    @Test
-    public void testCountdown() throws Exception {
-        Countdown c = new Countdown();
 
-        assertTrue(c.getSeconds() == 4);
-        assertTrue(c.resetCountdown() == 4);
-    }
 }
