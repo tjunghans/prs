@@ -4,7 +4,9 @@
 
 
  /**
- * Created with IntelliJ IDEA.
+ * The menu class is used for generating console menus
+ *
+ *
  * User: tjunghans
  * Date: 3.11.2013
  * Time: 8:07 PM
@@ -21,11 +23,11 @@ public class Menu {
     public Integer printMenuWithChoice() {
         String question = "Chose menu item: ";
 
-        Integer index = 0;
+        Integer menuIndex = 0;
 
         for (String menuItem : this.menuItems) {
-            index += 1;
-            System.out.println(index + ") " + menuItem);
+            menuIndex += 1;
+            System.out.println(menuIndex + ") " + menuItem);
 
         }
 
@@ -33,8 +35,7 @@ public class Menu {
 
         Scanner in = new Scanner(System.in);
 
-        Integer choice = Integer.parseInt(in.next());
-
-        return choice;
+        // Return selected menu index
+        return Integer.parseInt(in.next());
     }
 }

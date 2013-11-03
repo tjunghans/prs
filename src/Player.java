@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 public class Player {
-    protected String playerType = "human";
+    protected String playerType = "Human";
 
     public Player() {
 

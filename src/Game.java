@@ -55,6 +55,7 @@ public class Game {
         System.out.println(player1.getPlayerType() + " vs " + player2.getPlayerType());
         System.out.println(playerOneShape.getShapeType());
         System.out.println(playerTwoShape.getShapeType());
+        System.out.println("");
         System.out.println(resultText);
 
         return true;
