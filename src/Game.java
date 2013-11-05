@@ -19,6 +19,8 @@ public class Game {
     };
 
     private Map<String, Integer> shapeIndex = new HashMap<String, Integer>();
+
+    // TODO: Move shape labels to external properties/i18n
     private String[] shapes = new String[]{
             "Rock", "Paper", "Scissors"
     };
@@ -42,6 +44,8 @@ public class Game {
         Shape playerOneShape;
 
         if (player1.playerType.equals("Human")) {
+
+            // The human player requires a menu
             Menu shapeType = new Menu();
 
             for (String shape:this.shapes) {
@@ -64,6 +68,7 @@ public class Game {
 
         String resultText;
 
+        // TODO: Move text to external properties/i18n file
         if (result > 0) {
             resultText = "Player 1 wins";
         } else if (result < 0) {
