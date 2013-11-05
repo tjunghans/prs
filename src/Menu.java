@@ -21,7 +21,7 @@ public class Menu {
     }
 
     public Integer printMenuWithChoice() {
-        String question = "Chose menu item: ";
+        String question = "Choose menu item: ";
 
         Integer menuIndex = 0;
 

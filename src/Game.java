@@ -29,12 +29,14 @@ public class Game {
         for (int i = 0; i < this.shapes.length; i++) {
             this.shapeIndex.put(this.shapes[i].toLowerCase(), i);
         }
+
+        this.deck = new ShapeDeck();
     }
 
     public boolean start() {
         System.out.println("Start Game" + System.getProperty("line.separator"));
 
-        deck = new ShapeDeck();
+
 
         return true;
     }
@@ -54,7 +56,7 @@ public class Game {
 
             Integer choice = shapeType.printMenuWithChoice();
 
-            playerOneShape = deck.getShapeByIndex(choice);
+            playerOneShape = deck.getShapeByIndex(choice - 1);
 
              // Show menu
         } else {
@@ -81,9 +83,40 @@ public class Game {
         System.out.println(playerOneShape.getShapeType());
         System.out.println(playerTwoShape.getShapeType());
         System.out.println("");
+
         System.out.println(resultText);
+        System.out.println("");
+
+        // Play again?
+
+        System.out.println("Play again?");
+        System.out.println("");
+        Menu playAgain = new Menu();
+        playAgain.addMenuItem("Yes");
+        playAgain.addMenuItem("No");
+        Integer playAgainChoice = playAgain.printMenuWithChoice();
+
+        if (playAgainChoice == 1) {
+            this.showMainMenu();
+        }
 
         return true;
+    }
+
+    public void showMainMenu() {
+        // 1. Show menu
+        Menu gameType = new Menu();
+        gameType.addMenuItem("Human vs Computer");
+        gameType.addMenuItem("Computer vs Computer");
+        Integer choice = gameType.printMenuWithChoice();
+
+        this.start();
+
+        if (choice == 1) {
+            this.newRound(new Player("Human"), new ComputerPlayer());
+        } else {
+            this.newRound(new ComputerPlayer(), new ComputerPlayer());
+        }
     }
 
 
