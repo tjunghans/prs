@@ -23,6 +23,10 @@ public class ShapeDeck {
         deck.add(new Shape("scissors"));
     }
 
+    public Shape getShapeByIndex(int index) {
+        return this.deck.get(index);
+    }
+
     public Shape getRandomShapeFromDeck() {
         int index = randomGenerator.nextInt(deck.size());
         return deck.get(index);

@@ -19,11 +19,14 @@ public class Game {
     };
 
     private Map<String, Integer> shapeIndex = new HashMap<String, Integer>();
+    private String[] shapes = new String[]{
+            "Rock", "Paper", "Scissors"
+    };
 
     public Game() {
-        this.shapeIndex.put("rock", 0);
-        this.shapeIndex.put("paper", 1);
-        this.shapeIndex.put("scissors", 2);
+        for (int i = 0; i < this.shapes.length; i++) {
+            this.shapeIndex.put(this.shapes[i].toLowerCase(), i);
+        }
     }
 
     public boolean start() {
@@ -34,9 +37,26 @@ public class Game {
         return true;
     }
 
-    public boolean newRound(Player player1, Player player2) {
+    public boolean newRound(Player player1, ComputerPlayer player2) {
 
-        Shape playerOneShape = deck.getRandomShapeFromDeck();
+        Shape playerOneShape;
+
+        if (player1.playerType.equals("Human")) {
+            Menu shapeType = new Menu();
+
+            for (String shape:this.shapes) {
+                shapeType.addMenuItem(shape);
+            }
+
+            Integer choice = shapeType.printMenuWithChoice();
+
+            playerOneShape = deck.getShapeByIndex(choice);
+
+             // Show menu
+        } else {
+            playerOneShape = deck.getRandomShapeFromDeck();
+        }
+
         Shape playerTwoShape = deck.getRandomShapeFromDeck();
 
         // Compare shapes

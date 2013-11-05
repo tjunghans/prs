@@ -13,23 +13,18 @@ public class Main {
         gameType.addMenuItem("Computer vs Computer");
         Integer choice = gameType.printMenuWithChoice();
 
-        if (choice == 1) {
-            // Human vs Computer
-        } else {
-            // Computer vs Computer
-        }
-
-
-        Countdown countdown = new Countdown();
-        //countdown.run();
-
         Game prsGame = new Game();
 
         prsGame.start();
 
-        // Presume two pc players
-        prsGame.newRound(new Player("Computer"), new Player("Computer"));
+        if (choice == 1) {
+            prsGame.newRound(new Player("Human"), new ComputerPlayer());
+        } else {
+            prsGame.newRound(new ComputerPlayer(), new ComputerPlayer());
+        }
 
-
+        // Solve countdown with callback later
+        //Countdown countdown = new Countdown();
+        //countdown.run();
     }
 }
