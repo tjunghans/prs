@@ -1,3 +1,6 @@
+package com.ebay.game;
+
+import com.ebay.game.Shape;
 import org.junit.Test;
 import static org.junit.Assert.*;
 /**
@@ -8,10 +11,10 @@ import static org.junit.Assert.*;
  * To change this template use File | Settings | File Templates.
  */
 public class ShapeTest {
-    @Test
-    public void testShape() throws Exception {
-        Shape rock = new Shape("rock");
 
-        assertTrue(rock.getShapeType().equals("rock"));
+    @Test
+    public void testShape() {
+        Shape rock = Shape.ROCK;
+        assertTrue(rock.getType().equals("Rock"));
     }
 }
