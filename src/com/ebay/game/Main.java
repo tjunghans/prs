@@ -1,14 +1,14 @@
 package com.ebay.game;
 
+import com.ebay.game.console.ConsoleGame;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Rock, Paper, Scissors");
-        System.out.println("=====================" + System.getProperty("line.separator"));
 
-        Game prsGame = new Game();
-
-        prsGame.showMainMenu();
+        ConsoleGame game = new ConsoleGame();
+        game.showGameTypeMenu();
+        game.playGameType();
 
 /*
         JFrame frame = new JFrame();

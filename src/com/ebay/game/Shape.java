@@ -39,4 +39,9 @@ public enum Shape {
         }
         return returnShape;
     }
+
+    @Override
+    public String toString() {
+        return this.getType();
+    }
 }

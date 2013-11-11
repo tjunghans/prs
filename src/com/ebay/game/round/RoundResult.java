@@ -1,4 +1,4 @@
-package com.ebay.game;
+package com.ebay.game.round;
 
 
 public enum RoundResult {
@@ -25,5 +25,23 @@ public enum RoundResult {
 
     public int getRoundResult() {
         return roundResult;
+    }
+
+
+    @Override
+    public String toString() {
+        String resultText = "";
+        switch (this) {
+            case TIE:
+                resultText = "It's a tie";
+                break;
+            case WIN:
+                resultText = "Player 1 wins";
+                break;
+            case LOOSE:
+                resultText = "Player 2 wins";
+                break;
+        }
+        return resultText;
     }
 }
