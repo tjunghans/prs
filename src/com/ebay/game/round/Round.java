@@ -1,13 +1,11 @@
 package com.ebay.game.round;
 
-
 import com.ebay.game.GameType;
 import com.ebay.game.Shape;
 
 import java.util.Random;
 
 public abstract class Round {
-
 
     public RoundResultData play() {
 
@@ -19,19 +17,29 @@ public abstract class Round {
         return new RoundResultData(result, firstPlayerShape, secondPlayerShape, getGameType());
     }
 
+    // Used with SwingGame
+    // TODO: DRY up
+    public RoundResultData play(Shape firstPlayerShape) {
+
+        Shape secondPlayerShape = getSecondPlayerShape();
+
+        int resultIndex = calculateResult(firstPlayerShape, secondPlayerShape);
+        RoundResult result = RoundResult.getByIndex(resultIndex);
+        return new RoundResultData(result, firstPlayerShape, secondPlayerShape, getGameType());
+    }
+
     protected abstract Shape getFirstPlayerShape();
     protected abstract GameType getGameType();
 
     protected Shape getSecondPlayerShape() {
-        return getRandonShape();
+        return getRandomShape();
     }
 
-    protected Shape getRandonShape() {
+    protected Shape getRandomShape() {
         int randomIndex = new Random().nextInt(3);
         return Shape.getByIndex(randomIndex);
     }
 
-    //todo refactor
     protected int calculateResult(Shape firstPlayerShape, Shape secondPlayerShape) {
         /**
          *              Rock       | Paper      | Scissors

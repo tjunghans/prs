@@ -14,7 +14,7 @@ public enum GameType {
         return this.index;
     }
 
-    //todo refactor
+    // ToDo: Refactor. There must be a better way
     public static GameType getByIndex(int index) {
         GameType result = GameType.PLAYER_VS_COMPUTER;
         for (GameType r : GameType.values()) {

@@ -1,6 +1,7 @@
 package com.ebay.game.gui;
 
-import com.ebay.game.GameType;
+import com.ebay.game.*;
+import com.ebay.game.Shape;
 import com.ebay.game.round.Round;
 import com.ebay.game.round.RoundFactory;
 import com.ebay.game.round.RoundResultData;
@@ -17,6 +18,8 @@ import java.awt.event.ActionListener;
  * Time: 1:58 PM
  * To change this template use File | Settings | File Templates.
  */
+
+// TODO: Break class into separate classes for each panel to simplify
 public class SwingGame {
     JFrame gui = new JFrame();
 
@@ -37,6 +40,7 @@ public class SwingGame {
 
     // panelResult Buttons
     JButton buttonPlayAgain;
+    private int shapeIndex;
 
     public SwingGame() {
 
@@ -128,7 +132,6 @@ public class SwingGame {
         panelResult.setLayout(new BoxLayout(panelResult, BoxLayout.Y_AXIS));
         panelResult.add(BorderLayout.CENTER, buttonPlayAgain);
 
-
         // Add panel to frame
         pane.add(BorderLayout.CENTER, panelResult);
 
@@ -139,35 +142,32 @@ public class SwingGame {
 
     public void playGameType(int choice) {
 
+        // TODO: This if-else needs refactoring
         if (choice == 0) {
-            SwingGame.this.showShapeMenu();
+            showShapeMenu();
+        } else {
+            Round round = RoundFactory.getRound(GameType.getByIndex(choice));
+            RoundResultData roundResult = round.play();
+            showResult(roundResult);
         }
-
-        System.out.println(choice);
-        Round round = RoundFactory.getRound(GameType.getByIndex(choice));
-        RoundResultData roundResult = round.play();
-
-        showResult(roundResult);
-        printResult(roundResult); // New view
     }
 
-    protected void printResult(RoundResultData result) {
-        System.out.println(result.getGameType());
-        System.out.println(result.getFirstPlayerShape());
-        System.out.println(result.getSecondPlayerShape());
-        System.out.println(" ");
-        System.out.println(result.getResult());
-        System.out.println(" ");
-        //showPlayAgainMenu();
+    // TODO: Refactor
+    public void playHumanGame(Shape selectedShape) {
+
+        Round round = RoundFactory.getRound(GameType.getByIndex(0));
+        RoundResultData roundResult = round.play(selectedShape);
+
+        // TODO: Toggling panels needs improvement
+        panelShowShapeMenu.setVisible(false);
+
+        showResult(roundResult);
     }
 
     // panelShowGameTypeMenu Buttons
     class GameType1Listener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
-            System.out.println("PC vs PC");
-
             SwingGame.this.playGameType(1);
-
             panelStart.setVisible(false);
 
         }
@@ -175,32 +175,27 @@ public class SwingGame {
 
     class GameType2Listener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
-            System.out.println("Human vs PC");
-
             SwingGame.this.playGameType(0);
-
             panelStart.setVisible(false);
-
-
         }
     }
 
     // panelShowShapeMenu Buttons
     class ButtonRockListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
-            System.out.println("Human chose rock");
+            SwingGame.this.playHumanGame(Shape.ROCK);
         }
     }
 
     class ButtonPaperListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
-            System.out.println("Human chose paper");
+            SwingGame.this.playHumanGame(Shape.PAPER);
         }
     }
 
     class ButtonScissorsListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
-            System.out.println("Human chose scissors");
+            SwingGame.this.playHumanGame(Shape.SCISSORS);
         }
     }
 
@@ -209,7 +204,6 @@ public class SwingGame {
         public void actionPerformed(ActionEvent event) {
             panelResult.setVisible(false);
             SwingGame.this.showGameTypeMenu();
-            System.out.println("Play Again");
         }
     }
 }

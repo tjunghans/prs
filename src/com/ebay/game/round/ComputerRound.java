@@ -9,7 +9,7 @@ public class ComputerRound extends Round {
 
     @Override
     protected Shape getFirstPlayerShape() {
-        return getRandonShape();
+        return getRandomShape();
     }
 
     @Override
