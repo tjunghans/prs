@@ -133,8 +133,4 @@ public class SimpleGui1B {
             System.out.println("Human chose scissors");
         }
     }
-
-
-
-
 }
