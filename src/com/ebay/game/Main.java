@@ -6,11 +6,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ConsoleGame game = new ConsoleGame();
+    /*    ConsoleGame game = new ConsoleGame();
         game.showGameTypeMenu();
-        game.playGameType();
+        game.playGameType();   */
 
-/*
+  /*
         JFrame frame = new JFrame();
         JButton button = new JButton("Human vs Computer");
         JButton button2 = new JButton("Computer vs Computer");
@@ -22,9 +22,8 @@ public class Main {
 
         frame.setSize(400, 300);
         frame.setVisible(true);
-*/
 
-
+  */
 
 
         // Solve countdown with callback later
