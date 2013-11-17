@@ -35,8 +35,12 @@ public class SimpleGui1B {
     public SimpleGui1B() {
         frame = new JFrame("Rock, Paper, Scissors");
         frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+
         pane = frame.getContentPane();
-        this.go();
+        this.showGameTypeMenu();
     }
 
     public void showShapeMenu() {
@@ -63,34 +67,35 @@ public class SimpleGui1B {
 
         // Add panel to frame
         pane.add(BorderLayout.CENTER, panelShowShapeMenu);
+
+        pane.revalidate();
+        pane.repaint();
     }
 
-    public void go() {
+    public void showGameTypeMenu() {
 
         panelStart = new JPanel();
 
+        // Declare components
         buttonGameType1 = new JButton("PC vs PC");
-
         buttonGameType2 = new JButton("Human vs PC");
-
         labelTitle = new JLabel("Choose game type");
 
+        // Add listeners
         buttonGameType1.addActionListener(new GameType1Listener());
         buttonGameType2.addActionListener(new GameType2Listener());
 
+        // Add components to panel
         panelStart.add(BorderLayout.NORTH, labelTitle);
-
         panelStart.setLayout(new BoxLayout(panelStart, BoxLayout.Y_AXIS));
         panelStart.add(BorderLayout.CENTER, buttonGameType1);
         panelStart.add(BorderLayout.CENTER, buttonGameType2);
 
+        // Add panel to frame
         pane.add(BorderLayout.CENTER, panelStart);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        frame.setSize(300, 300);
-
-        frame.setVisible(true);
+        pane.revalidate();
+        pane.repaint();
 
     }
 
