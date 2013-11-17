@@ -18,7 +18,6 @@ import static com.ebay.game.GameType.PLAYER_VS_COMPUTER;
  */
 public class ConsoleGame {
 
-
     private SelectMenu gameMenu = new SelectMenu();
     private static final String SEPARATOR = System.getProperty("line.separator");
 

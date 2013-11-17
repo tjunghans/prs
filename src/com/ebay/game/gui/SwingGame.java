@@ -1,5 +1,7 @@
 package com.ebay.game.gui;
 
+import javax.swing.*;
+
 /**
  * Created with IntelliJ IDEA.
  * User: tjunghans
@@ -8,6 +10,9 @@ package com.ebay.game.gui;
  * To change this template use File | Settings | File Templates.
  */
 public class SwingGame {
+    JFrame gui = new JFrame();
 
+    public void showGameTypeMenu() {
 
+    }
 }
